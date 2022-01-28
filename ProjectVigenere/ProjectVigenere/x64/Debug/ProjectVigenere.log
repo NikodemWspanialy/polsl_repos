@@ -1,0 +1,10 @@
+﻿  ProjectVigenere.cpp
+C:\Users\nikod\b87b534a-gr11-repo\projekt\ProjectVigenere\ProjectVigenere\ProjectVigenere.cpp(50,6): warning C4551: function call missing argument list
+  funkcje.cpp
+C:\Users\nikod\b87b534a-gr11-repo\projekt\ProjectVigenere\ProjectVigenere\funkcje.cpp(102,19): warning C4244: '=': conversion from 'std::streamoff' to 'int', possible loss of data
+C:\Users\nikod\b87b534a-gr11-repo\projekt\ProjectVigenere\ProjectVigenere\funkcje.cpp(147,19): warning C4244: '=': conversion from 'std::streamoff' to 'int', possible loss of data
+C:\Users\nikod\b87b534a-gr11-repo\projekt\ProjectVigenere\ProjectVigenere\funkcje.cpp(200,21): warning C4244: '=': conversion from 'std::streamoff' to 'int', possible loss of data
+C:\Users\nikod\b87b534a-gr11-repo\projekt\ProjectVigenere\ProjectVigenere\funkcje.cpp(215,23): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  Generating Code...
+C:\Users\nikod\b87b534a-gr11-repo\projekt\ProjectVigenere\ProjectVigenere\funkcje.cpp(313): warning C4715: 'pozycjaAlfabet': not all control paths return a value
+  ProjectVigenere.vcxproj -> C:\Users\nikod\b87b534a-gr11-repo\projekt\ProjectVigenere\x64\Debug\ProjectVigenere.exe
