@@ -1,0 +1,4 @@
+uzyc tablicu ascii do sprawdzania, znalesc deszyfrowanie na necie,
+skrocic kolejnosc ukladania argumentow wejsciowych,
+przekazywac nazwy plikow,
+etykiety
