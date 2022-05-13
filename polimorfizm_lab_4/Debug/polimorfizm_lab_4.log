@@ -1,0 +1,20 @@
+﻿  Figure.cpp
+  IDataSource.cpp
+C:\Users\SuperStudent\source\repos\polimorfizm_lab_4\IDataSource.h(2,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+C:\Users\SuperStudent\source\repos\polimorfizm_lab_4\User.h(2,9): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+C:\Users\SuperStudent\source\repos\polimorfizm_lab_4\IDataSource.h(3,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+  Kolo.cpp
+  MockDataSource.cpp
+C:\Users\SuperStudent\source\repos\polimorfizm_lab_4\MockDataSource.h(2,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+C:\Users\SuperStudent\source\repos\polimorfizm_lab_4\User.h(2,9): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+C:\Users\SuperStudent\source\repos\polimorfizm_lab_4\IDataSource.h(2,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+C:\Users\SuperStudent\source\repos\polimorfizm_lab_4\IDataSource.h(3,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+  polimorfizm_lab_4.cpp
+C:\Users\SuperStudent\source\repos\polimorfizm_lab_4\IDataSource.h(2,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+C:\Users\SuperStudent\source\repos\polimorfizm_lab_4\User.h(2,9): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+C:\Users\SuperStudent\source\repos\polimorfizm_lab_4\IDataSource.h(3,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+  Prostokat.cpp
+  User.cpp
+C:\Users\SuperStudent\source\repos\polimorfizm_lab_4\User.h(2,9): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+  Generating Code...
+  polimorfizm_lab_4.vcxproj -> C:\Users\SuperStudent\source\repos\polimorfizm_lab_4\Debug\polimorfizm_lab_4.exe
