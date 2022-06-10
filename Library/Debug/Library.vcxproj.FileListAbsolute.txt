@@ -1,0 +1,2 @@
+C:\PRJs\PRVs\Library\Debug\Library.exe
+C:\PRJs\PRVs\Library\Debug\Library.pdb
