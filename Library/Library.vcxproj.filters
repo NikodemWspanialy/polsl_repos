@@ -21,21 +21,12 @@
     <ClCompile Include="Menu.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ISBN.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Status.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Menu.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ISBN.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Author.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Status.h">

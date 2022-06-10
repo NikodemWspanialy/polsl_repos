@@ -1,10 +1,38 @@
 #pragma once
 #include<string>
-#include "Author.h"
-#include "ISBN.h"
+//#include "Author.h"
+//#include "ISBN.h"
 #include "Status.h"
 
 namespace nw {
+	class ISBN
+	{
+		int isbn;
+	public:
+		ISBN(const int& isbn) :isbn(isbn) {}
+
+		std::string ToString() {
+			std::string str = std::to_string(isbn);
+			return str;
+		}
+	};
+	class Author {
+		std::string firstName;
+		std::string lastName;
+	public:
+		Author(const std::string& fn, const std::string& ln) : firstName(fn), lastName(ln) {}
+		std::string ToString() const {
+			return(firstName + " " + lastName);
+		}
+		std::string getFirstName() {
+			return firstName;
+		}
+		std::string getLastName() {
+			return lastName;
+		}
+	};
+
+
 	class Object //'podstawa do dziedziczenia
 	{
 		int privateNumber;

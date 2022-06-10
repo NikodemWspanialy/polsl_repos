@@ -45,7 +45,7 @@ namespace nw {
 
 		void start_login() {
 			std::fstream plik;
-			std::string login_in, password_in;
+			std::string login_in = "", password_in = "";
 			std::string login_out, password_out;
 			std::string get_line;
 			std::stringstream ss;
@@ -96,9 +96,25 @@ namespace nw {
 			std::stringstream ss;
 			std::cout << "login:" << std::endl;
 			std::cin >> new_login;
+			for (size_t i = 0; i, new_login.size(); i++) {
+				if (char(new_login[i]) < 48 or char(new_login[i]) > 122) {
+					std::cout << "use only english alphabet and numbers!\n";
+					_getch();
+					system("cls");
+					start_registration();
+				}
+			}
 			system("cls");
 			std::cout << "password:" << std::endl;
 			std::cin >> new_password;
+			for (size_t i = 0; i, new_password.size(); i++) {
+				if (char(new_password[i]) < 48 or char(new_password[i]) > 122) {
+					std::cout << "use only english alphabet and numbers!\n";
+					_getch();
+					system("cls");
+					start_registration();
+				}
+			}
 			system("cls");
 			plik.open("users.txt", std::ios::in);
 			if (plik.is_open()) {
