@@ -1,6 +1,5 @@
-//projekt semstralny biblioteka 1.1
-#include <iostream>
-#include<string>
+//projekt semstralny biblioteka 1.
+
 #include "Menu.h"
 #include "Login.h"
 

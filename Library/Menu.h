@@ -7,6 +7,8 @@
 #include "Object.h"
 #include "Login.h"
 #include "Status.h"
+#include"File.h"
+#include<vector>
 
 namespace nw {
 	class Menu //: public Start
@@ -42,7 +44,7 @@ namespace nw {
 					break;
 				case 52: //4
 					system("cls");
-					borrow();
+					borrow_number();
 					break;
 				case 53: //5
 					system("cls");
@@ -167,7 +169,7 @@ namespace nw {
 			Menu_start();
 		}
 
-		void borrow() {
+		void borrow_number() {
 			if (number_of_objects < 3) {
 				std::string input = "";
 				bool correct = true;
@@ -183,7 +185,7 @@ namespace nw {
 
 				}
 				system("cls");
-				borrow_object(id);
+				borrow_plik(id);
 				Menu_start();
 			}
 			else {
@@ -194,127 +196,96 @@ namespace nw {
 			}
 		}
 
-		void borrow_object(int id) {
-			//std::fstream plik_status, plik_users;
-			//std::string get_line, status, user;
-			//int number;
-			//std::stringstream ss;
-			//size_t last = 0, present = 0, total, enter_number = 0, enter_number_2 = 0;
+		void borrow_plik(int id) {
+			std::fstream plik_status,plik_users;
+			std::string get_line_string, private_status, user;
+			std::stringstream ss;
+			int private_number;
 
-			//plik_status.open("status.txt", std::ios::in);
-			//if (plik_status.is_open()) {
-			//	plik_status.seekp(0);
-			//	while (std::getline(plik_status, get_line)) {
-			//		enter_number++;
-			//		last = present;
-			//		present = plik_status.tellp();
-			//		ss << get_line;
-			//		ss >> number >> status >> user;
-			//		if (number == id) {
-			//			if (status == "n") {
-			//				std::cout << "this item is already borrowed by " << user << "\n";
-			//				_getch();
-			//				system("cls");
-			//				Menu_start();
-			//			}
-			//			else if (status == "a") {
-			//				plik_users.open("users.txt", std::ios::in);
-			//				if (plik_users.is_open()) {
- 		//						status = "n";
-			//					char* buf_first_part_status = new char[last + 1];
-			//					plik_status.seekp(0, std::ios::end);
-			//					total = plik_status.tellp();
-			//					char* buf_second_part_status = new char[total];
-			//					plik_status.seekp(0);
-			//					plik_status.read(buf_first_part_status, (last+ 1));
-			//					plik_status.seekp(std::ios::beg + present);
-			//					plik_status.read(buf_second_part_status, total + 1);
-			//					plik_status.close();
+			plik_status.open("status.txt", std::ios::in);
+			if(plik_status.is_open()){
+				Status_file* status_file = new Status_file();
 
-			//					plik_status.open("status.txt", std::ios::in);
+				while (std::getline(plik_status, get_line_string)) {
+					ss << get_line_string;
+					ss >> private_number >> private_status >> user;
+					ss = std::stringstream("");
+					if (private_number != id) {
+						status_file->Add_line(get_line_string);
+					}
+					else {
+						if (private_status == "a") {
+							plik_users.open("users.txt");
+							if (plik_users.is_open()) {
+								Users_file* users_file = new Users_file();
+								std::string tmp_login, tmp_password;
+								int borrowed_number, first_item, sec_item, third_item;
 
-			//					std::string a;
-			//					plik_status.seekp(present);
-			//					while (std::getline(plik_status, a)) {
-			//						enter_number_2++;
-			//					}
-			//					plik_status.close();
-			//					plik_status.open("status2.txt", std::ios::trunc | std::ios::out);
-			//					plik_status.write(buf_first_part_status, last- enter_number + 1);
-			//					plik_status << number << ' '<< status << ' ' << login << std::endl;
-			//					plik_status.write(buf_second_part_status, (total - present - enter_number_2 - enter_number + 3));
-
-			//					delete[] buf_second_part_status;
-			//					delete[] buf_first_part_status;
-			//					//------------------------------------------------------
-			//					number_of_objects++;
-			//					enter_number = 0;
-			//					enter_number_2 = 0;
-			//					last = 0;
-			//					present = 0;
-			//					get_line = "";
-			//					ss = std::stringstream("");
-			//					std::string tmp_login, tmp_password;
-			//					int tmp_amount_of_objects, first_borrowed, second_borrowed, th_borrowed;
-
-			//					plik_users.seekp(0);
-			//					while (std::getline(plik_users, get_line)) {
-			//						enter_number++;
-			//						last = present;
-			//						present = plik_users.tellp();
-			//						ss << get_line;
-			//						ss >> tmp_login >> tmp_password >> tmp_amount_of_objects >> first_borrowed >> second_borrowed >> th_borrowed;
-			//						if (tmp_login == login) {
-			//							tmp_amount_of_objects = number_of_objects;
-			//							char* buf_first_part_users = new char[last +1];
-			//							plik_users.seekg(0, std::ios::end);
-			//							total = plik_users.tellp();
-			//							char* buf_second_part_users = new char[total];
-			//							plik_users.seekg(0);
-			//							plik_users.read(buf_first_part_users, (last - enter_number + 2));
-			//							plik_users.seekg(std::ios::beg + present);
-			//							plik_users.read(buf_second_part_users, total - present - enter_number - enter_number_2 + 3);
-			//							plik_users.close();
-			//							plik_users.open("users.txt", std::ios::in);
-			//							plik_users.seekg(present);
-			//							std::string a;
-			//							while (std::getline(plik_users, a)) {
-			//								enter_number_2++;
-			//							}
-			//							plik_users.close();
-			//							plik_users.open("users2.txt", std::ios::trunc | std::ios::out);
-			//							plik_users.write(buf_first_part_users, last);
-			//							if (first_borrowed == 0) {
-			//								plik_users << tmp_login << ' ' << tmp_password << ' ' << tmp_amount_of_objects << ' ' << number << ' ' << second_borrowed
-			//									<< ' ' << th_borrowed << std::endl;
-			//							}
-			//							else if (second_borrowed == 0) {
-			//								plik_users << tmp_login << ' ' << tmp_password << ' ' << tmp_amount_of_objects << ' ' << first_borrowed << ' ' << number
-			//									<< ' ' << th_borrowed << std::endl;
-			//							}
-			//							else {
-			//								plik_users << tmp_login << ' ' << tmp_password << ' ' << tmp_amount_of_objects << ' ' << first_borrowed << ' ' << second_borrowed
-			//									<< ' ' << number << std::endl;
-			//							}
-			//							plik_users.write(buf_second_part_users, (total - present - enter_number_2));
-			//							plik_users << std::endl << std::endl;
-
-			//							delete[] buf_second_part_users;
-			//							delete[] buf_first_part_users;
-			//						}
-			//						ss = std::stringstream("");
-			//					}
-
-			//					std::cout << "everything went corently\n";
-			//					_getch();
-			//					return;
-			//				}
-			//			}
-			//		}
-			//		ss = std::stringstream("");
-
-			//	}
-			//}
+								private_status = "n";
+								user = login;
+								std::vector<std::string> v;
+								std::string tmp_string = std::to_string(private_number);
+								v.push_back(tmp_string);
+								v.push_back(private_status);
+								v.push_back(user);
+								status_file->Create_line(v);
+								//user class
+							    while (std::getline(plik_users, get_line_string)) {
+									ss << get_line_string;
+									ss >> tmp_login >> tmp_password >> borrowed_number >> first_item >> sec_item >> third_item;
+									ss = std::stringstream("");
+									if (tmp_login != login) {
+										users_file->Add_line(get_line_string);
+									}
+							        else if (tmp_login == login) {
+										std::vector<std::string> v2;
+										borrowed_number++;
+										if (first_item == 0)
+											first_item = id;
+										else if (sec_item == 0)
+											sec_item = id;
+										else
+											third_item = id;
+										v2.push_back(tmp_login);
+										v2.push_back(tmp_password);
+										tmp_string = std::to_string(borrowed_number);
+										v2.push_back(tmp_string);
+										tmp_string = std::to_string(first_item);
+										v2.push_back(tmp_string);
+										tmp_string = std::to_string(sec_item);
+										v2.push_back(tmp_string);
+										tmp_string = std::to_string(third_item);
+										v2.push_back(tmp_string);
+										users_file->Create_line(v2);
+									}
+								}
+								plik_users.close();
+								users_file->out_write("users2.txt");
+								delete users_file;
+							}
+							else {
+								std::cout << "files dont works\n";
+								_getch();
+								Menu_start();
+							}
+						}
+						else {
+							std::cout << "u cant borrow this object, it is already taken\n";
+							_getch();
+							system("cls");
+							//usunac vecotr w statusie i usunac wskaznik stuatus
+							Menu_start();
+						}
+					}
+				}
+				status_file->out_write("status2.txt");
+				delete status_file;
+			}
+			else {
+				std::cout << "files dontg works\n";
+				_getch();
+				Menu_start();
+			}
 		}
 
 		void return_items() {
