@@ -41,9 +41,15 @@ namespace nw {
 		Object(const int& pN ,const std::string& title) :privateNumber(pN), title(title) {}
 
 		virtual void write(){}
-
+		std::string addspace(std::string a) {
+			for (size_t i = 0; i < a.length(); i++) {
+				if (a[i] == '_')
+					a[i] = ' ';
+			}
+			return a;
+		}
 		 std::string ToString() {
-			return(std::to_string(privateNumber)+ " \"" + title + "\"");
+			return(std::to_string(privateNumber)+ " \"" + addspace(title) + "\"");
 		}
 		std::string getNumber() {
 			return(std::to_string(privateNumber));

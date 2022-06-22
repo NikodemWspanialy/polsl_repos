@@ -3,3 +3,5 @@ C:\PRJs\PRVs\Library\x64\Debug\Library.pdb
 C:\Users\SuperStudent\repos\Library\x64\Debug\Library.exe
 C:\Users\nikod\Desktop\Library\x64\Debug\Library.exe
 C:\Users\nikod\Desktop\Library\x64\Debug\Library.pdb
+C:\PRJs\REPOs2\Library\x64\Debug\Library.exe
+C:\PRJs\REPOs2\Library\x64\Debug\Library.pdb

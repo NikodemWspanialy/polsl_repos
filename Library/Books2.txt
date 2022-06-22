@@ -6,5 +6,5 @@
 1006 Diuna Frank Herbert 0 
 1007 Lolita Vladimir Nabokov 0
 1008 Dracula Bram Stoker 0 
-1009 Harry_Potter_i_kamień_filozoficzny JK Rowling 0
-1010 Hobbit JRR Tolkien 0
+1009 Harry_Potter_i_kamień_filozoficzny JK Rowling
+1010 Hobbit JRR Tolkien

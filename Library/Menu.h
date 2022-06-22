@@ -48,7 +48,7 @@ namespace nw {
 					break;
 				case 53: //5
 					system("cls");
-					return_items();
+					return_number();
 					break;
 				case 54: //6
 					system("cls");
@@ -60,35 +60,120 @@ namespace nw {
 			}
 		}
 		void borrowed_items(){
-			std::fstream plik_users;
+			std::fstream plik_users, plik_books, plik_games;
 			std::stringstream ss;
-			std::string get_line, tmp_login, tmp_password;
-			int number, first_borrowed, second_borrowed, th_borrowed;
+			std::string get_line, tmp_login, tmp_password, gl_author_name, gl_author_lname, gl_title, gl_producer;
+			int number, first_borrowed, second_borrowed, th_borrowed, gl_number = 0, gl_ibsn;
 			plik_users.open("users.txt", std::ios::in);
-			if (plik_users.is_open()) {
+			plik_books.open("books.txt", std::ios::in);
+			plik_games.open("videogames.txt", std::ios::in);
+			if (plik_users.is_open() and plik_books.is_open() and plik_games.is_open()) {
 				while (std::getline(plik_users, get_line)) {
 					ss << get_line;
 					ss >> tmp_login >> tmp_password >> number >> first_borrowed >> second_borrowed >> th_borrowed;
-					if (tmp_login == login) {
-						switch (number) {
-						case 1:
-
-							break;
-						case 2:
-
-							break;
-						case 3:
-
-							break;
-						case 0:
-							std::cout << "you did not borrowed any object yet\n";
-							_getch();
-							break;
-						}
-					}
 					ss = std::stringstream("");
+					if (tmp_login == login) {
+							std::cout << "You got "<< number <<" object:\n";
+							if (first_borrowed <= 1999 and first_borrowed > 999) {
+								while (first_borrowed != gl_number) {
+									std::getline(plik_books, get_line);
+									ss << get_line;
+									ss >> gl_number >> gl_title >> gl_author_name >> gl_author_lname >> gl_ibsn;
+									ss = std::stringstream("");
+									if (first_borrowed == gl_number) {
+										Book b(gl_number, gl_title, gl_author_name, gl_author_lname, gl_ibsn);
+										b.write();
+										std::cout << std::endl;
+									}
+								}
+								plik_books.seekg(0);
+							}
+							if(first_borrowed > 1999){
+								while (first_borrowed != gl_number) {
+									std::getline(plik_games, get_line);
+									ss << get_line;
+									ss >> gl_number >> gl_title >> gl_producer;
+									ss = std::stringstream("");
+									if (first_borrowed == gl_number) {
+										Videogame v(gl_number, gl_title, gl_producer);
+										v.write();
+										std::cout << std::endl;
+									}
+								}
+								plik_games.seekg(0);
+							}
+							if (second_borrowed <= 1999 and second_borrowed > 999) {
+								while (second_borrowed != gl_number) {
+									std::getline(plik_books, get_line);
+									ss << get_line;
+									ss >> gl_number >> gl_title >> gl_author_name >> gl_author_lname >> gl_ibsn;
+									ss = std::stringstream("");
+									if (second_borrowed == gl_number) {
+										Book b(gl_number, gl_title, gl_author_name, gl_author_lname, gl_ibsn);
+										b.write();
+										std::cout << std::endl;
+									}
+								}
+								plik_books.seekg(0);
+							}
+							if (second_borrowed > 1999) {
+								while (second_borrowed != gl_number) {
+									std::getline(plik_games, get_line);
+									ss << get_line;
+									ss >> gl_number >> gl_title >> gl_producer;
+									ss = std::stringstream("");
+									if (second_borrowed == gl_number) {
+										Videogame v(gl_number, gl_title, gl_producer);
+										v.write();
+										std::cout << std::endl;
+									}
+								}
+								plik_games.seekg(0);
+							}
+							if (th_borrowed <= 1999 and th_borrowed > 999) {
+								while (th_borrowed != gl_number) {
+									std::getline(plik_books, get_line);
+									ss << get_line;
+									ss >> gl_number >> gl_title >> gl_author_name >> gl_author_lname >> gl_ibsn;
+									ss = std::stringstream("");
+									if (th_borrowed == gl_number) {
+										Book b(gl_number, gl_title, gl_author_name, gl_author_lname, gl_ibsn);
+										b.write();
+										std::cout << std::endl;
+									}
+								}
+								plik_books.seekg(0);
+							}
+							if (th_borrowed > 1999) {
+								while (th_borrowed != gl_number) {
+									std::getline(plik_games, get_line);
+									ss << get_line;
+									ss >> gl_number >> gl_title >> gl_producer;
+									ss = std::stringstream("");
+									if (th_borrowed == gl_number) {
+										Videogame v(gl_number, gl_title, gl_producer);
+										v.write();
+										std::cout << std::endl;
+									}
+								}
+								plik_games.seekg(0);
+							}
+
+							plik_books.close();
+							plik_games.close();
+							plik_users.close();
+							_getch();
+							system("cls");
+							Menu_start();
+							break;
+					}
 
 				}
+			}
+			else {
+				std::cout << "file problems\n:";
+					_getch();
+				Menu_start();
 			}
 			_getch();
 			Menu_start();
@@ -175,15 +260,15 @@ namespace nw {
 				bool correct = true;
 				int id = 0;
 				std::cout << "type number of object, wchich you want to borrow\n";
-
-				while (id == 0) {
 					std::cin >> id;
-					std::cout << "it is not a corect number! try again\n";
 					std::cin.clear();
 					if (id < 1000 or id> 3000)
-						id = 0;
-
-				}
+					{
+						std::cout << "it is not a corect number! try again\n";
+						_getch();
+						system("cls");
+						Menu_start();
+					}
 				system("cls");
 				borrow_plik(id);
 				Menu_start();
@@ -260,8 +345,11 @@ namespace nw {
 									}
 								}
 								plik_users.close();
-								users_file->out_write("users2.txt");
+								users_file->out_write("users.txt");
 								delete users_file;
+								number_of_objects++;
+								std::cout << "you succesfuly borrowed an object\n";
+								_getch();
 							}
 							else {
 								std::cout << "files dont works\n";
@@ -278,7 +366,7 @@ namespace nw {
 						}
 					}
 				}
-				status_file->out_write("status2.txt");
+				status_file->out_write("status.txt");
 				delete status_file;
 			}
 			else {
@@ -288,9 +376,147 @@ namespace nw {
 			}
 		}
 
-		void return_items() {
-			_getch();
-			Menu_start();
+		void return_number() {
+			if (number_of_objects != 0) {
+				std::fstream plik;
+				std::string gl_login, gl_password, gl;
+				std::stringstream ss;
+				int number, first, second, three;
+				plik.open("users.txt", std::ios::in);
+				std::string input = "";
+				bool correct = true;
+				int id = 0;
+				std::cout << "type number of object, wchich you want to return\n";
+
+				std::cin >> id;
+					std::cin.clear();
+					if (id > 1000 and id < 3000){}
+					else {
+						std::cout << "it is not a corect number! try again\n";
+						_getch();
+						system("cls");
+						Menu_start();
+					}
+					if (plik.is_open()) {
+						while (gl_login != login) {
+							std::getline(plik, gl);
+							ss << gl;
+							ss >> gl_login >> gl_password >> number >> first >> second >> three;
+							ss = std::stringstream("");
+						}
+						if (id == first or id == second or id == three) {
+							system("cls");
+							return_plik(id);
+						}
+						else {
+							std::cout << "This object is no borrowed by you!\n";
+							_getch();
+							system("cls");
+							Menu_start();
+						}
+					}
+			}
+			else {
+				std::cout << "you dont have objects so u cant return!\n";
+				_getch();
+				system("cls");
+				Menu_start();
+			}
+		}
+
+		void return_plik(int id) {
+				std::fstream plik_status,plik_users;
+			std::string get_line_string, private_status, user;
+			std::stringstream ss;
+			int private_number;
+
+			plik_status.open("status.txt", std::ios::in);
+			if(plik_status.is_open()){
+				Status_file* status_file = new Status_file();
+
+				while (std::getline(plik_status, get_line_string)) {
+					ss << get_line_string;
+					ss >> private_number >> private_status >> user;
+					ss = std::stringstream("");
+					if (private_number != id) {
+						status_file->Add_line(get_line_string);
+					}
+					else {
+						if (private_status == "n") {
+							plik_users.open("users.txt");
+							if (plik_users.is_open()) {
+								Users_file* users_file = new Users_file();
+								std::string tmp_login, tmp_password;
+								int borrowed_number, first_item, sec_item, third_item;
+
+								private_status = "a";
+								user = login;
+								std::vector<std::string> v;
+								std::string tmp_string = std::to_string(private_number);
+								v.push_back(tmp_string);
+								v.push_back(private_status);
+								v.push_back("");
+								status_file->Create_line(v);
+								//user class
+							    while (std::getline(plik_users, get_line_string)) {
+									ss << get_line_string;
+									ss >> tmp_login >> tmp_password >> borrowed_number >> first_item >> sec_item >> third_item;
+									ss = std::stringstream("");
+									if (tmp_login != login) {
+										users_file->Add_line(get_line_string);
+									}
+							        else if (tmp_login == login) {
+										std::vector<std::string> v2;
+										borrowed_number--;
+										if (first_item == id)
+											first_item = 0;
+										else if (sec_item == id)
+											sec_item = 0;
+										else if(third_item == id)
+											third_item = 0;
+										v2.push_back(tmp_login);
+										v2.push_back(tmp_password);
+										tmp_string = std::to_string(borrowed_number);
+										v2.push_back(tmp_string);
+										tmp_string = std::to_string(first_item);
+										v2.push_back(tmp_string);
+										tmp_string = std::to_string(sec_item);
+										v2.push_back(tmp_string);
+										tmp_string = std::to_string(third_item);
+										v2.push_back(tmp_string);
+										users_file->Create_line(v2);
+									}
+								}
+								plik_users.close();
+								users_file->out_write("users.txt");
+								delete users_file;
+								number_of_objects--;
+								std::cout << "you succesfuly returned an object\n";
+								_getch();
+							}
+							else {
+								std::cout << "files dont works\n";
+								_getch();
+								Menu_start();
+							}
+						}
+						else {
+							std::cout << "this object \n";
+							_getch();
+							system("cls");
+							//usunac vecotr w statusie i usunac wskaznik stuatus
+							Menu_start();
+						}
+					}
+				}
+				status_file->out_write("status.txt");
+				delete status_file;
+			}
+			else {
+				std::cout << "files dontg works\n";
+				_getch();
+				Menu_start();
+			}
 		}
 	};
 }

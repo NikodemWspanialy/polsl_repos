@@ -1,7 +1,1 @@
-﻿  File.cpp
-  Library.cpp
-C:\Users\nikod\Desktop\Library\Menu.h(101,37): warning C4101: 'lenght': unreferenced local variable
-  Menu.cpp
-C:\Users\nikod\Desktop\Library\Menu.h(101,37): warning C4101: 'lenght': unreferenced local variable
-  Generating Code...
-  Library.vcxproj -> C:\Users\nikod\Desktop\Library\x64\Debug\Library.exe
+﻿  Library.vcxproj -> C:\PRJs\REPOs2\Library\x64\Debug\Library.exe
