@@ -1,9 +1,0 @@
-﻿  Lab_1.cpp
-C:\Users\SuperStudent.PL\Desktop\Lab_1\Lab_1.cpp(9,25): error C2668: "nw::Vector<int>::Vector": niejednoznaczne wywołanie przeciążonej funkcji
-C:\Users\SuperStudent.PL\Desktop\Lab_1\Vector.h(22,3): message : może to być „nw::Vector<int>::Vector(const size_t)”
-C:\Users\SuperStudent.PL\Desktop\Lab_1\Vector.h(17,3): message : lub       "nw::Vector<int>::Vector(const size_t,const T &)"
-          with
-          [
-              T=int
-          ]
-C:\Users\SuperStudent.PL\Desktop\Lab_1\Lab_1.cpp(9,25): message : podczas próby dopasowania listy argumentów "(int)"
