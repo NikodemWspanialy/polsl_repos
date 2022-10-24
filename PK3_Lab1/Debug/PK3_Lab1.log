@@ -1,0 +1,5 @@
+﻿  PK3_Lab1.cpp
+C:\PRJs\CPLUSPLUS_PRJs\REPOs3\PK3_Lab1\PK3_Lab1.cpp(11,23): warning C4018: '<': signed/unsigned mismatch
+C:\PRJs\CPLUSPLUS_PRJs\REPOs3\PK3_Lab1\PK3_Lab1.cpp(19,27): warning C4018: '<': signed/unsigned mismatch
+C:\PRJs\CPLUSPLUS_PRJs\REPOs3\PK3_Lab1\PK3_Lab1.cpp(28,27): warning C4018: '<': signed/unsigned mismatch
+  PK3_Lab1.vcxproj -> C:\PRJs\CPLUSPLUS_PRJs\REPOs3\PK3_Lab1\Debug\PK3_Lab1.exe
