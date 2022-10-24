@@ -25,7 +25,7 @@ namespace nw {
 				data[i] = f(i);
 			}
 		}
-		Vector(Vector& v) noexcept :size(v.sizeGetter()), data(v.dataGetter()) {
+		Vector(const Vector& v) noexcept :size(v.sizeGetter()), data(new T[size]) {
 			for (size_t i = 0; i < size; i++)
 				data[i] = v.data[i];
 		}

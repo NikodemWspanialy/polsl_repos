@@ -29,5 +29,11 @@ int main()
             LOG(vFib[i]);
         }
     }
+    nw::Vector<int> vTest1(1, 1);
+    nw::Vector<int> vTest2(vTest1);
+    vTest1[0] = 2;
+   
+        LOG(vTest1[0]);
+        LOG(vTest2[0]);
     _getch();
 }
