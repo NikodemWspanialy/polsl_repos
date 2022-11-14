@@ -12,28 +12,25 @@ int main()
         std::cout << v1[i];
     }
     LOG("");
-    //potega 2
-    {
-        int a = 1;
-        nw::Vector<int> v2(10,[&a](int) mutable {a = 2 * a; return a; });
-        for (int i = 0; i < v2.sizeGetter(); i++) {
-            LOG(v2[i]);
-        }
-    }
-
-    //ciag fib
-    {
-        int a = 1, b = 1;
-        nw::Vector<int> vFib(10, [&](int)mutable {int a_tmp = a, b_tmp = b; a = a + b; b = a_tmp; return b_tmp; });
-        for (int i = 0; i < vFib.sizeGetter(); i++) {
-            LOG(vFib[i]);
-        }
-    }
+   
     nw::Vector<int> vTest1(1, 1);
     nw::Vector<int> vTest2(vTest1);
     vTest1[0] = 2;
    
         LOG(vTest1[0]);
         LOG(vTest2[0]);
+
+        nw::Vector<int> v2;
+        v2 = { 1,2,3,44 };
+        for (int i = 0; i < v2.sizeGetter(); i++)
+            LOG(v2[i]);
+        nw::Vector<int> v3(1, 5);
+        v2 = v3;
+        for (int i = 0; i < v2.sizeGetter(); i++)
+            LOG(v2[i]);
     _getch();
+    nw::Vector<char>oneParamNumvber(7);
+    for (int i = 0; i < oneParamNumvber.sizeGetter(); i++) {
+        LOG(oneParamNumvber[i]);
+    }
 }

@@ -2,6 +2,7 @@
 #include <string>
 #include<functional>
 #include <iostream>
+#include <vector>
 namespace nw {
 	template<class T> T DefValue() { std::cout << "unknow type"; throw std::exception(); }
 	template<> double DefValue() { return 0.0; }
@@ -30,7 +31,6 @@ namespace nw {
 				data[i] = v.data[i];
 		}
 		Vector(Vector&& v) noexcept :size(v.sizeGetter()), data(v.dataGetter()) {
-			v.data = 0;
 			v.data = nullptr;
 		}
 
@@ -59,6 +59,25 @@ namespace nw {
 			datatmp[size-1] = value;
 			data = nullptr;
 			data = datatmp;
+		 }
+		Vector<T> operator =(const std::vector<T> v)noexcept{
+			delete[] data;
+			data = nullptr;
+			size = v.size();
+			data = new T[size];
+			for (size_t i = 0; i < size; i++) {
+				data[i] = v[i];
+			}
+			return *this;
+		}
+		void operator =(nw::Vector<T> v) noexcept {
+			delete[] this->data;
+			this->data = nullptr;
+			this->size = v.sizeGetter();
+			this->data = new T[size];
+			for (size_t i = 0; i < this->size; i++) {
+				this->data[i] = v[i];
+			}
 		}
 	    bool operator ==(Vector<T> &b) const {
 			if (size != b.sizeGetter())
